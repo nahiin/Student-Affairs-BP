@@ -1,0 +1,200 @@
+<app-header [solid]="true" />
+
+@if (workshop(); as w) {
+<main class="pt-nav-offset">
+
+  <section class="ws-hero">
+    <div class="ws-hero-overlay" aria-hidden="true"></div>
+    <div class="ws-hero-glow" aria-hidden="true"><div class="g1"></div><div class="g2"></div></div>
+
+    <div class="ws-hero-inner">
+      <div class="ws-hero-grid">
+        <div>
+          <span class="ws-tag">{{ w.department }}</span>
+          <h1 class="ws-title">{{ w.title }}</h1>
+          <div class="ws-presented-by">Presented by</div>
+          <div class="ws-presenter-name">{{ w.presenter.name }}</div>
+          <div class="ws-hero-meta">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width:14px;height:14px;color:var(--gold)">
+                <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+              </svg>
+              {{ w.time }}
+            </span>
+          </div>
+        </div>
+
+        <div class="ws-portrait-wrap">
+          <div class="ws-portrait">
+            @if (w.presenter.photo) {
+              <img [src]="w.presenter.photo" [alt]="w.presenter.name" />
+            } @else {
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width:56px;height:56px;color:var(--gold)">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
+              </svg>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ws-body">
+    <div class="ws-layout">
+      <div class="ws-main">
+
+        <div class="doc-section">
+          <h2>{{ w.noun }} Description</h2>
+          <div class="doc-rule"></div>
+          <div class="doc-prose">
+            @for (p of w.description; track p) {
+              <p>{{ p }}</p>
+            }
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h2>{{ w.noun }} Objectives</h2>
+          <div class="doc-rule"></div>
+          <ul class="doc-list">
+            @for (o of w.objectives; track o) {
+              <li>{{ o }}</li>
+            }
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h2>{{ w.noun }} Itinerary</h2>
+          <div class="doc-rule"></div>
+          <ol class="doc-list-ol">
+            @for (i of w.itinerary; track i) {
+              <li>{{ i }}</li>
+            }
+          </ol>
+        </div>
+
+      </div>
+
+      <aside class="ws-aside">
+        <div class="aside-card">
+          <div class="aside-card-head"><h3>Workshop Resources</h3></div>
+          <ul class="resource-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width:18px;height:18px;color:var(--gold)">
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" />
+              </svg>
+              <div class="resource-info">
+                <div class="resource-label">{{ w.resource.label }}</div>
+                <div class="resource-type">{{ w.resource.type }}</div>
+              </div>
+              <span class="resource-badge">{{ w.resource.type }}</span>
+            </li>
+          </ul>
+          <div class="aside-card-footer">
+            <a [href]="w.resource.file" download class="btn btn-navy">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width:14px;height:14px">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              {{ w.resource.downloadLabel }}
+            </a>
+          </div>
+        </div>
+
+        <div class="aside-card">
+          <div class="aside-card-head"><h3>About the Presenter</h3></div>
+          <div class="aside-card-pad">
+            <div class="doc-presenter">
+              <div class="doc-presenter-avatar">
+                @if (w.presenter.photo) {
+                  <img [src]="w.presenter.photo" [alt]="w.presenter.name" />
+                } @else {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width:26px;height:26px;color:rgba(30,42,74,0.6)">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
+                  </svg>
+                }
+              </div>
+              <div>
+                <div class="name">{{ w.presenter.name }}</div>
+                @if (w.presenter.role) {
+                  <div class="role">{{ w.presenter.role }}</div>
+                }
+              </div>
+            </div>
+            @if (w.presenter.bio) {
+              <div class="doc-prose" style="margin-top:1rem">
+                <p>{{ w.presenter.bio }}</p>
+              </div>
+            }
+            @if (w.presenter.fullBio) {
+              <button type="button" class="session-link" style="margin-top:1rem" (click)="dialogOpen.set(true)">
+                View details
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width:14px;height:14px">
+                  <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+                </svg>
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="aside-card">
+          <div class="aside-card-head"><h3>Related Workshops</h3></div>
+          <ul class="related-list">
+            @for (r of related(); track r.slug) {
+              <li>
+                <a [routerLink]="['/workshops', r.slug]">
+                  <span>{{ r.title }}</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width:14px;height:14px">
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+@if (w.presenter.fullBio) {
+  <div class="dialog-overlay" [class.is-open]="dialogOpen()" (click)="$event.target === $event.currentTarget && dialogOpen.set(false)">
+    <div class="dialog-box">
+      <button type="button" class="dialog-close" aria-label="Close" (click)="dialogOpen.set(false)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width:18px;height:18px">
+          <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+      <div class="dialog-header">
+        <div class="dialog-avatar">
+          @if (w.presenter.photo) {
+            <img [src]="w.presenter.photo" [alt]="w.presenter.name" />
+          } @else {
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:32px;height:32px;color:rgba(30,42,74,0.4)">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
+            </svg>
+          }
+        </div>
+        <div class="dialog-heading">
+          <div class="dialog-dept">{{ w.department }}</div>
+          <h3 class="dialog-title">{{ w.presenter.name }}</h3>
+          @if (w.presenter.role) {
+            <div class="dialog-role">{{ w.presenter.role }}</div>
+          }
+        </div>
+      </div>
+      <div class="dialog-divider"></div>
+      <p class="dialog-desc">{{ w.presenter.fullBio }}</p>
+    </div>
+  </div>
+}
+} @else {
+  <main class="pt-nav-offset">
+    <div class="container" style="padding-block:6rem;text-align:center">
+      <h1>Workshop not found</h1>
+      <p><a routerLink="/">Back to home</a></p>
+    </div>
+  </main>
+}
+
+<app-footer />

@@ -1,0 +1,45 @@
+<header class="nav" [class.is-solid]="solid() || scrolled()">
+  <div class="nav-inner">
+    <a routerLink="/" class="nav-brand">
+      <div class="nav-brand-badge"><img src="/assets/img/logo.png" alt="PMU logo" /></div>
+      <div class="nav-brand-text">
+        <div class="nav-brand-eyebrow">PMU</div>
+        <div class="nav-brand-title">Student Affairs</div>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a class="nav-link" routerLink="/" fragment="about">About</a>
+      <a class="nav-link" routerLink="/" fragment="schedule">Schedule</a>
+      <a class="nav-link" routerLink="/" fragment="presenters">Presenters</a>
+      <a class="nav-link" routerLink="/" fragment="featured">Featured</a>
+      <a class="nav-link" routerLink="/" fragment="venue">Venue</a>
+      <a class="nav-link" routerLink="/" fragment="contact">Contact</a>
+      <a class="nav-register" routerLink="/" fragment="contact">Register</a>
+    </nav>
+
+    <button class="nav-toggle" type="button" aria-label="Toggle menu" (click)="toggleMobile()">
+      @if (mobileOpen()) {
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width:22px;height:22px">
+          <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      } @else {
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="width:22px;height:22px">
+          <line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      }
+    </button>
+  </div>
+
+  <div class="nav-mobile" [class.is-open]="mobileOpen()">
+    <div class="nav-mobile-inner">
+      <a routerLink="/" fragment="about" (click)="closeMobile()">About</a>
+      <a routerLink="/" fragment="schedule" (click)="closeMobile()">Schedule</a>
+      <a routerLink="/" fragment="presenters" (click)="closeMobile()">Presenters</a>
+      <a routerLink="/" fragment="featured" (click)="closeMobile()">Featured</a>
+      <a routerLink="/" fragment="venue" (click)="closeMobile()">Venue</a>
+      <a routerLink="/" fragment="contact" (click)="closeMobile()">Contact</a>
+      <a class="nav-register" routerLink="/" fragment="contact" (click)="closeMobile()">Register</a>
+    </div>
+  </div>
+</header>
