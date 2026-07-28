@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p assets/css assets/js assets/img workshops)",
+      "Bash(cp \"src/assets/pmu-campus.jpg\" \"assets/img/pmu-campus.jpg\")",
+      "Bash(cp \"public/favicon.ico\" \"favicon.ico\")",
+      "Bash(cp \"public/academic-advising-seminar.pptx\" \"academic-advising-seminar.pptx\")",
+      "Bash(python3 -)",
+      "Bash(grep -n 'href=\"/\\\\|src=\"/' workshops/registration-department.html)",
+      "Bash(grep -n 'href=\"/\\\\|src=\"/' index.html)",
+      "Bash(grep -n 'href=\"/\\\\|src=\"/' login.html)",
+      "Bash(mkdir -p trash)",
+      "Bash(mv .lovable .prettierignore .prettierrc AGENTS.md bun.lock bunfig.toml components.json eslint.config.js package.json src public tsconfig.json vite.config.ts trash/)",
+      "Bash(node -e \"require\\('fs'\\).readFileSync\\('c:/Users/kshafique/OneDrive - PMU/Desktop/SABP/assets/js/main.js','utf8'\\); new Function\\(require\\('fs'\\).readFileSync\\('c:/Users/kshafique/OneDrive - PMU/Desktop/SABP/assets/js/main.js','utf8'\\)\\); console.log\\('main.js: syntax OK'\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(curl -s -o /dev/null -w \"unpkg: %{http_code}\\\\n\" --max-time 5 https://unpkg.com/lucide@latest)",
+      "Bash(curl -s -o /dev/null -w \"lucide-static menu icon: %{http_code}\\\\n\" --max-time 5 https://unpkg.com/lucide-static@latest/icons/menu.svg)"
+    ]
+  }
+}

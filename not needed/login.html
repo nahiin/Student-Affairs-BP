@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login — PMU Best Practices Seminar</title>
+<meta name="description" content="Sign in to access your PMU Best Practices Seminar account." />
+<meta property="og:title" content="Login — PMU Best Practices Seminar" />
+<meta property="og:description" content="Sign in to access your PMU Best Practices Seminar account." />
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<div class="login-page">
+  <div class="login-card">
+    <div class="login-badge"><i data-lucide="log-in" class="icon" style="width:20px;height:20px;color:var(--gold)"></i></div>
+    <h1>Sign in</h1>
+    <p class="login-sub">Access your seminar account and manage your registration.</p>
+
+    <form class="login-form" onsubmit="event.preventDefault()">
+      <label class="field">
+        <span class="field-label">Email</span>
+        <input class="field-input" type="email" />
+      </label>
+      <label class="field">
+        <span class="field-label">Password</span>
+        <input class="field-input" type="password" />
+      </label>
+      <button type="submit" class="btn btn-navy login-submit">Sign in</button>
+    </form>
+
+    <p class="login-footer">
+      Not registered yet?
+      <a href="index.html#contact">Register for the seminar</a>
+    </p>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

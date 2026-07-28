@@ -1,0 +1,142 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy-soft: var(--navy-soft);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+
+  --color-dept-advising: var(--dept-advising);
+  --color-dept-campus: var(--dept-campus);
+  --color-dept-admissions: var(--dept-admissions);
+  --color-dept-career: var(--dept-career);
+  --color-dept-counseling: var(--dept-counseling);
+  --color-dept-ptcce: var(--dept-ptcce);
+  --color-dept-registration: var(--dept-registration);
+
+  --font-serif: "Raleway", system-ui, sans-serif;
+  --font-sans: "Roboto", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --navy: oklch(0.22 0.07 260);
+  --navy-deep: oklch(0.16 0.06 260);
+  --navy-soft: oklch(0.30 0.06 260);
+  --gold: #f97516;
+  --gold-soft: #fb923c;
+  --cream: oklch(0.985 0.008 85);
+  --ink: oklch(0.18 0.02 265);
+
+  --dept-advising: oklch(0.55 0.15 250);
+  --dept-campus: oklch(0.78 0.16 75);
+  --dept-admissions: oklch(0.55 0.14 190);
+  --dept-career: oklch(0.5 0.2 300);
+  --dept-counseling: oklch(0.62 0.19 15);
+  --dept-ptcce: oklch(0.6 0.18 145);
+  --dept-registration: oklch(0.55 0.14 220);
+
+  --background: oklch(1 0 0);
+  --foreground: var(--ink);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--ink);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--ink);
+  --primary: var(--navy);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: var(--cream);
+  --secondary-foreground: var(--navy);
+  --muted: oklch(0.96 0.005 85);
+  --muted-foreground: oklch(0.5 0.02 265);
+  --accent: var(--gold);
+  --accent-foreground: var(--navy);
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.92 0.008 265);
+  --input: oklch(0.92 0.008 265);
+  --ring: var(--gold);
+}
+
+.dark {
+  --background: var(--navy-deep);
+  --foreground: oklch(0.98 0 0);
+  --card: var(--navy);
+  --card-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+@utility gold-diamond {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-gold);
+  &::before, &::after {
+    content: "";
+    height: 1px;
+    width: 2.5rem;
+    background: currentColor;
+    opacity: 0.6;
+  }
+}
